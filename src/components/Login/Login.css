@@ -1,0 +1,26 @@
+.login-form {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background-color: #fff;
+}
+
+.login-header {
+  text-align: center;
+  font-size: 60px;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.login-label {
+  color: #000;
+  font-size: 25px;
+}
+
+button.login-button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+}

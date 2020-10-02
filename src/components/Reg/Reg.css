@@ -1,0 +1,38 @@
+.reg-form {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  align-items: center;
+  background-color: #fff;
+}
+
+.reg-header {
+  text-align: center;
+  font-size: 60px;
+  color: #000;
+  margin-bottom: 30px;
+}
+
+.reg-label {
+  color: #000;
+  font-size: 30px;
+}
+
+.reg-top-label {
+  display: flex;
+}
+
+.reg-bottom-container {
+  margin-top: 15px;
+}
+
+button.reg-button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 20px;
+}
+
+.reg-input {
+  height: 50px;
+}
