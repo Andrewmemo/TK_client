@@ -49,13 +49,25 @@ ul.navbar-nav {
 
 .viewPrograms-button {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
+}
+
+.viewAllPrograms-button {
+  margin-top: 40px;
 }
 
 .viewPrograms-button button {
   font-size: 25px;
 }
 
+.viewAllPrograms-button button {
+  font-size: 25px;
+}
+
 .allProgramsInfo {
   font-size: 20px;
+}
+
+.yourPrograms-items {
+  text-align: center;
 }

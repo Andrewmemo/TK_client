@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const HomeNav: React.FunctionComponent = () => {
   return (
@@ -7,12 +8,16 @@ export const HomeNav: React.FunctionComponent = () => {
         Tech-Stack Kachalochka
       </a>
       <ul className="navbar-nav">
-        <button type="button" className="btn btn-warning home-nav-button">
-          Sign Up
-        </button>
-        <button type="button" className="btn btn-primary home-nav-button">
-          Log In
-        </button>
+        <Link to={"/reg"}>
+          <button type="button" className="btn btn-warning home-nav-button">
+            Sign Up
+          </button>
+        </Link>
+        <Link to={"/login"}>
+          <button type="button" className="btn btn-primary home-nav-button">
+            Log In
+          </button>
+        </Link>
       </ul>
     </nav>
   );

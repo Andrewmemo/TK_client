@@ -65,47 +65,55 @@ export const HomeAllPrograms: React.FunctionComponent<{
         <div className="row">
           <div className="col-7">
             <div className="list-group" id="list-tab" role="tablist">
-              {interweavings.map(
-                (item: any) =>
-                  item.role.name === "coach" && (
-                    <a
-                      key={item.id}
-                      className="list-group-item list-group-item-action"
-                      id={`list-${item.id}-list`}
-                      data-toggle="list"
-                      href={`list-${item.id}`}
-                      role="tab"
-                      aria-controls={`${item.id}`}
-                      onClick={onClickAcctive}
-                    >
-                      {item.program.name} by {item.user.first_name}{" "}
-                      {item.user.last_name}
-                    </a>
-                  )
-              )}
+              {interweavings &&
+                interweavings.map(
+                  (item: any) =>
+                    item.role.name === "coach" && (
+                      <a
+                        key={item.id}
+                        className="list-group-item list-group-item-action"
+                        id={`list-${item.id}-list`}
+                        data-toggle="list"
+                        href={`list-${item.id}`}
+                        role="tab"
+                        aria-controls={`${item.id}`}
+                        onClick={onClickAcctive}
+                      >
+                        {item.program.name} by {item.user.first_name}{" "}
+                        {item.user.last_name}
+                      </a>
+                    )
+                )}
             </div>
           </div>
           <div className="col-5">
             <div className="tab-content" id="nav-tabContent">
-              {interweavings.map(
-                (item: any) =>
-                  item.role.name === "coach" && (
-                    <div
-                      key={item.id}
-                      className="allProgramsInfo tab-pane fade show"
-                      id={`list-${item.id}`}
-                      role="tabpanel"
-                      aria-labelledby={`list-${item.id}-list`}
-                    >
-                      {showAllContent(
-                        Object.keys(item.program.content),
-                        Object.values(item.program.content)
-                      )}
-                    </div>
-                  )
-              )}
+              {interweavings &&
+                interweavings.map(
+                  (item: any) =>
+                    item.role.name === "coach" && (
+                      <div
+                        key={item.id}
+                        className="allProgramsInfo tab-pane fade show"
+                        id={`list-${item.id}`}
+                        role="tabpanel"
+                        aria-labelledby={`list-${item.id}-list`}
+                      >
+                        {showAllContent(
+                          Object.keys(item.program.content),
+                          Object.values(item.program.content)
+                        )}
+                      </div>
+                    )
+                )}
             </div>
           </div>
+        </div>
+        <div className="viewAllPrograms-button">
+          <button type="button" className="btn btn-info">
+            {" "}
+            View all programs
+          </button>
         </div>
       </div>
     </React.Fragment>
