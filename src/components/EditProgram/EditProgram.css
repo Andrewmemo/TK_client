@@ -1,4 +1,4 @@
-.createProg-form {
+.editProg-form {
   font-family: "David Libre", serif;
   display: flex;
   justify-content: center;
@@ -8,17 +8,17 @@
   background-color: #fff;
 }
 
-.createProgram-headers {
+.editProgram-headers {
   margin-top: 30px;
 }
 
-.createProg-button {
+.editProg-button {
   font-size: 20px;
   padding: 15px;
   width: 100%;
 }
 
-.createProg-label {
+.editProg-label {
   font-size: 20px;
 }
 
@@ -27,10 +27,10 @@
   margin-bottom: 10px;
 }
 
-.createItemContainer {
+.editItemContainer {
   margin-bottom: 15px;
 }
 
-.createProgramRemoveButton {
+.editProgramRemoveButton {
   margin-left: 30px;
 }

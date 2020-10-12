@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
-
+import http from "../../services/httpService";
 import "./Login.css";
 
 export const Login = () => {
@@ -16,12 +15,15 @@ export const Login = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/login", user);
+      const response = await http.post("http://localhost:5000/login", user);
+      console.log(response);
+
+      localStorage.setItem("token", response.headers["x-tk-login-token"]);
+
       window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         setLoginErrors(ex.response.data);
-        console.log(ex.response.data);
       }
     }
   };

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Link, Redirect } from "react-router-dom";
 import Joi from "joi-browser";
-import axios from "axios";
+import http from "../../services/httpService";
 
 import "./Reg.css";
 
@@ -10,6 +9,7 @@ export const Reg = () => {
   const [regFirstName, setRegFirstName] = useState("");
   const [regLastName, setRegLastName] = useState("");
   const [regEmail, setRegEmail] = useState("");
+  const [regPhoto, setRegPhoto] = useState("");
   const [regPassword, setRegPassword] = useState("");
 
   const schema = {
@@ -54,11 +54,14 @@ export const Reg = () => {
     let user = {
       first_name: regFirstName,
       last_name: regLastName,
+      photo:
+        regPhoto ||
+        "https://i.ibb.co/Bz7mbcS/36324eb648f2cb507e243e8030e4dc0a.png",
       email: regEmail,
       password: regPassword,
     };
 
-    await axios.post("http://localhost:5000/reg", user);
+    await http.post("http://localhost:5000/reg", user);
     window.location = "/login";
   };
 
@@ -98,6 +101,16 @@ export const Reg = () => {
             </div>
           </div>
           <div className="form-group reg-bottom-container">
+            <label className="reg-label" htmlFor="formGroupRegPhoto">
+              Photo link
+            </label>
+            <input
+              onChange={(event) => setRegPhoto(event.target.value)}
+              type="text"
+              className="form-control reg-input"
+              id="formGroupRegPhoto"
+              placeholder="http://linkToPhoto.com"
+            />
             <label className="reg-label" htmlFor="formGroupRegEmail">
               Email
             </label>
@@ -113,8 +126,6 @@ export const Reg = () => {
                 {regErrors.email}
               </div>
             )}
-          </div>
-          <div className="form-group">
             <label className="reg-label" htmlFor="formGroupRegPassword">
               Password
             </label>

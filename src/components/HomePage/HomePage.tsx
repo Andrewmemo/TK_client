@@ -3,28 +3,29 @@ import React from "react";
 import "./HomePage.css";
 
 import { HomeNav } from "./additionals/HomeNav";
-import { HomeAllPrograms } from "./additionals/HomeAllPrograms";
-import { HomeYourPrograms } from "./additionals/HomeYourPrograms";
-import { HomeCreateProgram } from "./additionals/HomeCreateProgram";
-import { Program } from "../../interfaces/program.interface";
+import { HomeInfo } from "./additionals/HomeInfo";
+import { HomePopularCoaches } from "./additionals/HomePopularCoaches";
+import { HomePrograms } from "./additionals/HomePrograms";
+import { User } from "../../interfaces/user.interface";
 
 export const HomePage: React.FunctionComponent<{
-  interweavings: Array<Program>;
-  setInterweavings: Function;
-}> = ({ interweavings, setInterweavings }) => {
+  interweavings: Array<any>;
+  currentUser: User;
+  setCurrentUser: Function;
+}> = ({ interweavings, currentUser, setCurrentUser }) => {
   return (
     <React.Fragment>
-      <HomeNav />
-      <div className="d-flex">
-        <div className="homeRight">
-          <HomeAllPrograms
-            interweavings={interweavings}
-            setInterweavings={setInterweavings}
-          />
-        </div>
-        <div className="homeLeft">
-          <HomeYourPrograms />
-          <HomeCreateProgram />
+      <div className="homeBody">
+        <HomeNav currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        <HomeInfo />
+        <div className="site-section">
+          <div className="container">
+            {" "}
+            <div className="row">
+              <HomePopularCoaches />
+              <HomePrograms interweavings={interweavings} />
+            </div>
+          </div>
         </div>
       </div>
     </React.Fragment>
