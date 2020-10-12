@@ -1,7 +1,7 @@
 .reg-form {
+  font-family: "David Libre", serif;
   display: flex;
   justify-content: center;
-  text-align: center;
   height: 100vh;
   align-items: center;
   background-color: #fff;
@@ -9,22 +9,20 @@
 
 .reg-header {
   text-align: center;
-  font-size: 60px;
+  font-size: 50px;
   color: #000;
   margin-bottom: 30px;
 }
 
 .reg-label {
+  text-align: left;
+  margin-top: 10px;
   color: #000;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .reg-top-label {
   display: flex;
-}
-
-.reg-bottom-container {
-  margin-top: 15px;
 }
 
 button.reg-button {

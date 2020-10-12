@@ -1,7 +1,8 @@
 import React from "react";
 
+import { Gym } from "./components/Gym.jsx";
+
 import "bootstrap/dist/css/bootstrap.css";
-import { Gym } from "./components/Gym";
 
 const App: React.FunctionComponent = () => {
   return <Gym />;

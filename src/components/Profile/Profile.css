@@ -1,0 +1,12 @@
+img.profileAvatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.proileButton {
+  width: 100%;
+}
+.profileButtonContainer {
+  font-size: 20px;
+}

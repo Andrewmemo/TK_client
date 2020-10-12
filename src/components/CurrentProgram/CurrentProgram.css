@@ -1,0 +1,48 @@
+.currentProgramContainer {
+  font-family: "Secular One", sans-serif;
+  font-size: 23px;
+}
+
+.currentProgramInfo {
+  text-align: center;
+}
+
+.currentProgramDescription {
+  color: #4d4d4d;
+  font-weight: 200;
+}
+
+.currentProgramBy {
+  color: #3ca59d;
+}
+
+.currentProgramImg {
+  border-radius: 10%;
+  width: 170px;
+}
+
+.currentProgramName {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  font-weight: 800;
+  font-size: 40px;
+}
+
+.currentPageContent {
+  text-align: center;
+}
+
+.currentPageContentHeader {
+  margin-bottom: 20px;
+  font-size: 35px;
+  font-weight: 600;
+}
+
+.currentPageContentCOntainer {
+  margin-top: 30px;
+}
+
+.currentPageContentButton {
+  height: 50px;
+  width: calc(50%);
+}
