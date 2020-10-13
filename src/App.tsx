@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Gym } from "./components/Gym.jsx";
+import  Gym  from "./components/Gym.jsx";
 
 import "bootstrap/dist/css/bootstrap.css";
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import http from "../services/httpService";
@@ -13,75 +13,86 @@ import { AllPrograms } from "./AllPrograms/AllPrograms";
 import { YourPrograms } from "./YourPrograms/YourPrograms";
 import { EditProgram } from "./EditProgram/EditProgram.jsx";
 
-export const Gym = () => {
-  const [currentUser, setCurrentUser] = useState({});
-  const [interweavings, setInterweavings] = useState([]);
+class Gym extends Component {
+  state = {
+    currentUser: {},
+    interweavings: []
+  }
 
-  useEffect(() => {
+  componentDidMount() {
     const jwt = localStorage.getItem("token");
     let decoded;
     if (jwt) {
       decoded = jwtDecode(jwt);
     }
-    if (decoded) setCurrentUser(decoded.user);
+    if (decoded) this.setState({ currentUser: decoded.user });
 
-    async function fetchAllPrograms() {
+    const fetchAllPrograms = async () => {
       const { data } = await http.get("http://localhost:5000/interweavings/");
-      setInterweavings(data);
+      console.log(data);
+      this.setState({  interweavings: data });
     }
     fetchAllPrograms();
-  }, []);
 
-  return (
-    <React.Fragment>
-      <Router>
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <HomePage
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-              interweavings={interweavings}
-              setInterweavings={setInterweavings}
-            />
-          )}
-        />
-        <Route
-          path="/me"
-          component={() => (
-            <Profile
-              currentUser={currentUser}
-              setCurrentUser={setCurrentUser}
-            />
-          )}
-        />
-        <Route
-          path="/allPrograms"
-          component={() => <AllPrograms interweavings={interweavings} />}
-        />
-        <Route
-          path="/yourPrograms"
-          component={() => (
-            <YourPrograms
-              interweavings={interweavings}
-              setInterweavings={setInterweavings}
-              currentUser={currentUser}
-            />
-          )}
-        />
-        <Route path="/currentProgram" component={CurrentProgram} />
-        <Route
-          path="/createProgram"
-          component={() => <CreateProgram currentUser={currentUser} />}
-        />
-        <Route
-          path="/editProgram"
-          component={() => <EditProgram currentUser={currentUser} />}
-        />
-        <Route path="/reg" component={Reg} />
-        <Route path="/login" component={Login} />
-      </Router>
-    </React.Fragment>
-  );
-};
+    
+  }
+
+  setCurrentUser = user => {
+    this.setState({ currentUser: user });
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <Router>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <HomePage
+                currentUser={this.state.currentUser}
+                setCurrentUser={this.setCurrentUser}
+                interweavings={this.state.interweavings}
+              />
+            )}
+          />
+          <Route
+            path="/me"
+            component={() => (
+              <Profile
+                currentUser={this.state.currentUser}
+                setCurrentUser={this.setCurrentUser}
+              />
+            )}
+          />
+          <Route
+            path="/allPrograms"
+            component={() => <AllPrograms interweavings={this.state.interweavings} />}
+          />
+          <Route
+            path="/yourPrograms"
+            component={() => (
+              <YourPrograms
+                interweavings={this.state.interweavings}
+                currentUser={this.state.currentUser}
+              />
+            )}
+          />
+          <Route path="/currentProgram" component={CurrentProgram} />
+          <Route
+            path="/createProgram"
+            component={() => <CreateProgram currentUser={this.state.currentUser} />}
+          />
+          <Route
+            path="/editProgram"
+            component={() => <EditProgram currentUser={this.state.currentUser} />}
+          />
+          <Route path="/reg" component={Reg} />
+          <Route path="/login" component={Login} />
+        </Router>
+      </React.Fragment>
+    );
+  }
+}
+
+export default Gym;
