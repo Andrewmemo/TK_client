@@ -35,19 +35,21 @@ export const CreateProgram = ({ currentUser }) => {
 
     const errors = {};
 
-    if (!createProgramContent.length) {
+    if (createProgramContent.length === 0) {
       errors["content"] = "Should be at least one item";
     }
 
-    for (let item of result.error.details) {
-      errors[item.path[0]] = item.message;
+    if (result.errors) {
+      for (let item of result.error.details) {
+        errors[item.path[0]] = item.message;
+      }
     }
 
     return errors;
   };
 
   const onClickCreateHandler = async () => {
-    const errors = validate();
+      const errors = validate();
     if (errors) {
       setCreateProgramErrors(errors);
       return;

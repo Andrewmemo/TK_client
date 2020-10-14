@@ -228,6 +228,7 @@ export const Profile = ({ currentUser, setCurrentUser }) => {
                       value={profEmail}
                       onChange={(event) => setProfEmail(event.target.value)}
                       type="email"
+                      disabled="disabled"
                       className="form-control"
                       name="email"
                       id="email"

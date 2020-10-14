@@ -12,11 +12,26 @@ import { Profile } from "./Profile/Profile.jsx";
 import { AllPrograms } from "./AllPrograms/AllPrograms";
 import { YourPrograms } from "./YourPrograms/YourPrograms";
 import { EditProgram } from "./EditProgram/EditProgram.jsx";
+import MobxComponent from "./MobxComponent/MobxComponent";
+import { observable, action  } from 'mobx';
+
+const todos = observable({
+  
+  count: 30,
+
+  increment() { this.count++ },
+
+  decrement() { this.count-- },
+},{
+  increment: action('Plus one'),
+  decrement: action('Minus one'),
+},)
 
 class Gym extends Component {
   state = {
     currentUser: {},
     interweavings: []
+    
   }
 
   componentDidMount() {
@@ -29,7 +44,6 @@ class Gym extends Component {
 
     const fetchAllPrograms = async () => {
       const { data } = await http.get("http://localhost:5000/interweavings/");
-      console.log(data);
       this.setState({  interweavings: data });
     }
     fetchAllPrograms();
@@ -39,6 +53,10 @@ class Gym extends Component {
 
   setCurrentUser = user => {
     this.setState({ currentUser: user });
+  }
+
+  setInterweavings = inter => {
+    this.setState({ interweavings: inter });
   }
 
   render() {
@@ -56,6 +74,11 @@ class Gym extends Component {
               />
             )}
           />
+          <Route path="/mobx" render = {() => (
+              <MobxComponent store = {todos}/>
+          )}>
+              
+          </Route>
           <Route
             path="/me"
             component={() => (
@@ -75,6 +98,7 @@ class Gym extends Component {
               <YourPrograms
                 interweavings={this.state.interweavings}
                 currentUser={this.state.currentUser}
+                setInterweavings = {this.setInterweavings}
               />
             )}
           />
@@ -94,5 +118,6 @@ class Gym extends Component {
     );
   }
 }
+
 
 export default Gym;
