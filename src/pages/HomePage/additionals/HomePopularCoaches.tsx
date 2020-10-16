@@ -9,7 +9,7 @@ export const HomePopularCoaches: React.FunctionComponent = () => {
 
   useEffect(() => {
     async function fectCoaches() {
-      const { data } = await http.get("http://localhost:5000/interweavings/");
+      const { data } = await http.get(process.env.REACT_APP_API_URL + "interweavings/");
 
       let finalArray = data.filter(
         ((set) => (f: Interweaving) =>

@@ -18,7 +18,7 @@ export const EditProgram = () => {
   useEffect(() => {
     const { id } = queryString.parse(window.location.search);
     async function fetchCurrentProgram() {
-      const { data } = await http.get(`http://localhost:5000/programs/${id}`);
+      const { data } = await http.get(`${process.env.REACT_APP_API_URL}programs/${id}`);
 
       setEditProgramName(data.name);
       setEditProgramDescription(data.description);
@@ -98,7 +98,7 @@ export const EditProgram = () => {
 
     await http.put(`http://localhost:5000/programs/${id}`, program);
 
-    window.location = "/yourPrograms";
+    window.location = "/me";
   };
   const onClickAddHandler = () => {
     const editExercise = document.getElementById("editProgramExercise");

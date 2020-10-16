@@ -61,7 +61,7 @@ export const Reg = () => {
       password: regPassword,
     };
 
-    await http.post("http://localhost:5000/reg", user);
+    await http.post(process.env.REACT_APP_API_URL + "reg", user);
     window.location = "/login";
   };
 

@@ -72,7 +72,7 @@ export const CreateProgram = ({ currentUser }) => {
       date: now,
     };
 
-    const { data } = await http.post("http://localhost:5000/programs", program);
+    const { data } = await http.post(process.env.REACT_APP_API_URL + "programs", program);
 
     let userEntity = {
       user_id: currentUser.id,
@@ -80,7 +80,7 @@ export const CreateProgram = ({ currentUser }) => {
       role_id: 1,
     };
 
-    await http.post("http://localhost:5000/interweavings", userEntity);
+    await http.post(process.env.REACT_APP_API_URL + "interweavings", userEntity);
 
     window.location = "/";
   };

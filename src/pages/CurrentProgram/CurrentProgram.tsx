@@ -38,7 +38,7 @@ export const CurrentProgram: React.FunctionComponent = () => {
     const { id } = queryString.parse(window.location.search);
     async function fetchCurrentProgram() {
       const { data } = await http.get(
-        `http://localhost:5000/interweavings/${id}`
+        `${process.env.REACT_APP_API_URL}interweavings/${id}`
       );
 
       setCurrentProgram(data);

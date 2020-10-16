@@ -30,8 +30,8 @@ export const YourPrograms: React.FunctionComponent<{
 
     setInterweavings(tempInterweavings);
 
-    await http.delete(`http://localhost:5000/interweavings/${id}`);
-    await http.delete(`http://localhost:5000/programs/${id}`);
+    await http.delete(`${process.env.REACT_APP_API_URL}interweavings/${id}`);
+    await http.delete(`${process.env.REACT_APP_API_URL}programs/${id}`);
   };
 
   let yourPrograms = interweavings.filter(

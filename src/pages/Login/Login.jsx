@@ -15,7 +15,7 @@ export const Login = () => {
     };
 
     try {
-      const response = await http.post("http://localhost:5000/login", user);
+      const response = await http.post(process.env.REACT_APP_API_URL + "login", user);
       console.log(response);
 
       localStorage.setItem("token", response.headers["x-tk-login-token"]);

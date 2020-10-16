@@ -72,9 +72,6 @@ a:hover {
   -o-transition: 0.2s all ease-in-out !important;
   transition: 0.2s all ease-in-out !important;
   top: 0;
-  font-size: 12px;
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 .btn:hover,
 .btn:active,

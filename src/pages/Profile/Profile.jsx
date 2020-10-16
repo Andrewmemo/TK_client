@@ -19,7 +19,7 @@ export const Profile = ({ currentUser, setCurrentUser }) => {
     setProfPhoto(currentUser.photo);
     setProfEmail(currentUser.email);
     setProfPassword(currentUser.password);
-  }, []);
+  }, [currentUser.email, currentUser.first_name, currentUser.last_name, currentUser.password, currentUser.photo]);
 
   const history = useHistory();
 
@@ -86,7 +86,7 @@ export const Profile = ({ currentUser, setCurrentUser }) => {
     };
 
     const response = await http.put(
-      `http://localhost:5000/users/${currentUser.id}`,
+      `${process.env.REACT_APP_API_URL}users/${currentUser.id}`,
       user
     );
 
@@ -209,7 +209,12 @@ export const Profile = ({ currentUser, setCurrentUser }) => {
                     </label>
                     <input
                       value={profPhoto}
-                      onChange={(event) => setProfPhoto(event.target.value)}
+                      onChange={(event) => setCurrentUser(
+                        {
+                          ...currentUser,
+                          photo: event.target.value
+                        }
+                      )}
                       type="text"
                       className="form-control"
                       name="photo"
